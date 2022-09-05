@@ -7,8 +7,10 @@ const player = new Player(iframe);
 
 player.on('timeupdate', throttle(timeVideoStop, 1000));
 
-const currentTime = localStorage.getItem("videoplayer-current-time");
-player.setCurrentTime(currentTime);
+if (localStorage.getItem("videoplayer-current-time")) {
+    const currentTime = localStorage.getItem("videoplayer-current-time");
+    player.setCurrentTime(currentTime);
+}
 
 function timeVideoStop(event) {
     let videoPausedTime = event.seconds
